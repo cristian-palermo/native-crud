@@ -11,6 +11,8 @@ import {RootStackParamList} from './types';
 export const AddScreen = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const isDisabled = !title && !description;
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -47,7 +49,12 @@ export const AddScreen = () => {
       />
 
       <View style={styles.button}>
-        <Button title="Add" color="white" onPress={handleChange} />
+        <Button
+          title="Add"
+          color="white"
+          onPress={handleChange}
+          disabled={isDisabled}
+        />
       </View>
     </View>
   );
